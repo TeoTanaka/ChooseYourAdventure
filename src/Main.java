@@ -8,13 +8,23 @@ import java.util.Scanner;
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static String name;
-    public static String[][] map = new String[50][50];
+    public static int mapWidth = 100;
+    public static int mapHeight = 100;
+    public static String player1,redCastle,redFort,redCamp,redKnight,redWizard,redSoldier,redDragon,redCavalier,redPeasant;
+    public static String player2,blueCastle,blueFort,blueCamp,blueKnight,blueWizard,blueSoldier,blueDragon,blueCavalier,bluePeasant;
+    public static String[][] map = new String[mapHeight][mapWidth];
+    public static mapObj[] objects = {new mapObj(10,10,redCastle)};
+
     public static void main(String[] args) {
         print(toColor("Hello, enter your name","blue"));
         name = scanner.nextLine();
         print("Hello "+name+", ");
+        //setIcons();
         fillMap();
+        displayMap();
         printMap();
+
+
     }
 
     public static String getInput(String question, String answer1, String answer2, String answer3){
@@ -29,6 +39,12 @@ public class Main {
         }
         return answer;
 
+    }
+    public static void displayMap(){
+        fillMap();
+        for(mapObj m : objects){
+            m.render();
+        }
     }
     public static void print(String input){
         System.out.println(input);
@@ -68,24 +84,52 @@ public class Main {
         return input;
     }
     public static void fillMap(){
-        for (int row = 0; row < 50; row++) {
-            for (int col = 0; col < 50; col++) {
+        for (int row = 0; row < mapHeight; row++) {
+            for (int col = 0; col < mapWidth; col++) {
                 map[row][col] = toColor(" ","green");
             }
         }
     }
     public static void printMap(){
         int row = 0;
-        for (int x = 0; x <=49 && row <=49;x++){
+        for (int x = 0; x <mapWidth && row <mapHeight;x++){
             System.out.print(map[row][x]);
-            if(x == 48){
-                System.out.print(map[row][49]+"\n");
+            if(x == mapWidth-1){
+                System.out.print(map[row][mapWidth-1]+"\n");
                 x = 0;
                 row+=1;
             }
         }
 
     }
+    public static void move(){
+        for (mapObj m : objects){
+
+        }
+    }
+//    public static void setIcons(){
+//        player1 = toColor("\uD83D\uDC51","red");
+//        player2 = toColor("\uD83D\uDC51","blue");
+//        redCastle = toColor("\uD83C\uDFF0","red");
+//        blueCastle = toColor("\uD83C\uDFF0","blue");
+//        redFort = toColor("♜","red");
+//        blueFort = toColor("♜","blue");
+//        redCamp = toColor("⛺","red");
+//        blueCamp = toColor("⛺","blue");
+//        redKnight = toColor("⛨","red");
+//        blueKnight = toColor("⛨","blue");
+//        redWizard = toColor("\uD83E\uDDD9\u200D♀️","red");
+//        blueWizard = toColor("\uD83E\uDDD9\u200D♀️","blue");
+//        redSoldier = toColor("⚔️","red");
+//        blueSoldier = toColor("⚔️","blue");
+//        redDragon = toColor("\uD83D\uDC09","red");
+//        blueDragon = toColor("\uD83D\uDC09","blue");
+//        redCavalier = toColor("\uD83D\uDC0E","red");
+//        blueCavalier = toColor("\uD83D\uDC0E","blue");
+//        redPeasant = toColor("\uD83E\uDDCD","red");
+//        bluePeasant = toColor("\uD83E\uDDCD","blue");
+//    }
 }
+
 
 
