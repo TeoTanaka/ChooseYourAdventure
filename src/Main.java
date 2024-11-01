@@ -28,16 +28,19 @@ public class Main {
 
 
     public static void main(String[] args) {
-        print(toColor("Hello, enter your name","blue"));
-        name = scanner.nextLine();
-        print("Hello "+name+", ");
+        print("-Old Fashioned Battle Simulator-");
+        print("two player game- your goal is to absolutely dominate the other player");
+        print("buy troops with your money (will refill 5 per round)");
+        print("move your troops, risk dangerous mountain passes for a more direct route to your enemy");
+        print("win...");
+        print("press enter to continue!");
+        scanner.nextLine();//just using to pause
         fillMap();
         displayObj();
         map[cursorY][cursorX] = toColor("  ","magenta");
         printMap(1);
         while (running){
-            turn(1
-            );
+            turn(1);
             displayObj();
             printMap(2);
             turn(2);
@@ -240,7 +243,7 @@ public class Main {
 
 
             }
-            if(Objects.equals(purchase, "teoiscool")){
+            if(Objects.equals(purchase, "thisisacrazycheatcode")){
                 objects.add(new mapObj(26,5,"redDragon"));
                 objects.add(new mapObj(20,5,"redDragon"));
                 objects.add(new mapObj(20,10,"redDragon"));
@@ -258,16 +261,19 @@ public class Main {
                         String direction = scanner.nextLine();
                         if (Objects.equals(direction, "w") && Objects.equals(map[m.y][m.x - m.speed], toColor("  ", "green"))) {
                             m.x -= m.speed;
-
+                            terrain(m);
                         }
                         if (Objects.equals(direction, "a") && Objects.equals(map[m.y-m.speed][m.x], toColor("  ", "green"))) {
                             m.y -= m.speed;
+                            terrain(m);
                         }
                         if (Objects.equals(direction, "s")&& Objects.equals(map[m.y][m.x - m.speed], toColor("  ", "green"))) {
                             m.x += m.speed;
+                            terrain(m);
                         }
                         if (Objects.equals(direction, "d")&& Objects.equals(map[m.y+m.speed][m.x], toColor("  ", "green"))) {
                             m.y += m.speed;
+                            terrain(m);
                         }
                         m.render();
                         encounter(m);
@@ -352,6 +358,17 @@ public class Main {
                  }
              }
              displayObj();
+
+            }
+
+        }
+        public static void terrain(mapObj m){
+            if (Objects.equals(storeMap[m.x][m.y], Main.toColor("\uD83D\uDDFB", "green"))){
+                if (Math.random() <= .4 && m.value <= 7){
+                    print("a blizzard starts and "+m.type+" is frozen to death");
+                    m.value = 0;
+                    scanner.nextLine();
+                }
             }
 
         }

@@ -26,7 +26,7 @@ public class mapObj {
         if (Objects.equals(type, "player1")){
             icon = Main.toColor("\uD83D\uDC51","red");
             value = 35;
-            speed = 1;
+            speed = 2;
             color = "red";
             range = 1;
             damage = 7;
@@ -34,7 +34,7 @@ public class mapObj {
         if (Objects.equals(type, "player2")){
             icon = Main.toColor("\uD83D\uDC51","blue");
             value = 35;
-            speed = 1;
+            speed = 2;
             color = "blue";
             range = 1;
             damage = 7;
