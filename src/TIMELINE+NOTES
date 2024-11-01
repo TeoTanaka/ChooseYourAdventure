@@ -3,6 +3,18 @@ display troop icons 5 mins -took roughly 1 hour
 do turn system roughly 45 mins -took roughly 1 hour
 made random terrain 30 mins - took roughly 10 mins
 
+INITIAL DESIGN
+print map
++random terrain generation
+
+if purchase = "soldier"
+    add a soldier
+etc.
+
+for every troop
+    get w a s d directions
+    move around
+
 
 NOTES
 I would've liked to add a fortress option where you can build castles and create defenses
