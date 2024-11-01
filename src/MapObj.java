@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class mapObj {
+public class MapObj {
     public int x;
     public int y;
     public int value;
@@ -10,7 +10,7 @@ public class mapObj {
     public boolean dead;
     public String type,color;
     public String icon;
-    public mapObj(int _x, int _y,String _type){
+    public MapObj(int _x, int _y, String _type){
         x = _y;//because the coordinate system on 2d arrays are flipped
         y = _x;
         type = _type;

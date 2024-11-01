@@ -19,16 +19,16 @@ public class Main {
 
 
 
-    public static ArrayList<mapObj> objects = new ArrayList<>(List.of(new mapObj[]{
-            new mapObj(25, 45, "redCastle"),
-            new mapObj(25, 5, "blueCastle"),
-            new mapObj(25, 44, "player1"),
-            new mapObj(25, 6, "player2"),
+    public static ArrayList<MapObj> objects = new ArrayList<>(List.of(new MapObj[]{
+            new MapObj(25, 45, "redCastle"),
+            new MapObj(25, 5, "blueCastle"),
+            new MapObj(25, 44, "player1"),
+            new MapObj(25, 6, "player2"),
     }));
 
 
     public static void main(String[] args) {
-        print("-Old Fashioned Battle Simulator-");
+        print("-Old Battle Simulator-");
         print("two player game- your goal is to absolutely dominate the other player");
         print("buy troops with your money (will refill 5 per round)");
         print("move your troops, risk dangerous mountain passes for a more direct route to your enemy");
@@ -68,8 +68,8 @@ public class Main {
     }
     public static void displayObj(){
         fillMap();
-        ArrayList<mapObj> filterList = new ArrayList<>(List.of(new mapObj[]{}));
-        for(mapObj m : objects){
+        ArrayList<MapObj> filterList = new ArrayList<>(List.of(new MapObj[]{}));
+        for(MapObj m : objects){
             if (m.value >= 0){
                 filterList.add(m);
             }
@@ -175,10 +175,10 @@ public class Main {
             purchase = scanner.nextLine();
             if(Objects.equals(purchase, "1")){
                 if (player == 1 && redMoney >= 3){
-                    objects.add(new mapObj(26,45,"redSoldier"));
+                    objects.add(new MapObj(26,45,"redSoldier"));
                     redMoney -=3;
                 }else if(player ==2 && blueMoney >= 3){
-                    objects.add(new mapObj(26,5,"blueSoldier"));
+                    objects.add(new MapObj(26,5,"blueSoldier"));
                     blueMoney -=3;
                 }else{
                     print("You don't have enough money to buy this");
@@ -186,10 +186,10 @@ public class Main {
             }
             if(Objects.equals(purchase, "2")){
                 if (player == 1 && redMoney >= 4){
-                    objects.add(new mapObj(26,45,"redArcher"));
+                    objects.add(new MapObj(26,45,"redArcher"));
                     redMoney -=4;
                 }else if(player ==2 && blueMoney >= 3){
-                    objects.add(new mapObj(26,5,"blueArcher"));
+                    objects.add(new MapObj(26,5,"blueArcher"));
                     blueMoney -=4;
                 }else{
                     print("You don't have enough money to buy this");
@@ -197,10 +197,10 @@ public class Main {
             }
             if(Objects.equals(purchase, "3")){
                 if (player == 1 && redMoney >= 10) {
-                    objects.add(new mapObj(26, 45, "redKnight"));
+                    objects.add(new MapObj(26, 45, "redKnight"));
                     redMoney -=10;
                 }else if(player ==2 && blueMoney >= 10){
-                    objects.add(new mapObj(26,5,"blueKnight"));
+                    objects.add(new MapObj(26,5,"blueKnight"));
                     blueMoney -=10;
                 }else{
                     print("You don't have enough money to buy this");
@@ -208,10 +208,10 @@ public class Main {
             }
             if(Objects.equals(purchase, "4")){
                 if (player == 1 && redMoney >= 12){
-                    objects.add(new mapObj(26,45,"redCavalier"));
+                    objects.add(new MapObj(26,45,"redCavalier"));
                     redMoney -=12;
                 }else if(player ==2 && blueMoney >= 12){
-                    objects.add(new mapObj(26,5,"blueCavalier"));
+                    objects.add(new MapObj(26,5,"blueCavalier"));
                     blueMoney -=12;
                 }else{
                     print("You don't have enough money to buy this");
@@ -220,10 +220,10 @@ public class Main {
             }
             if(Objects.equals(purchase, "5")){
                 if (player == 1 && redMoney >= 16){
-                    objects.add(new mapObj(26,45,"redWizard"));
+                    objects.add(new MapObj(26,45,"redWizard"));
                     redMoney -=16;
                 }else if(player ==2 && blueMoney >= 16){
-                    objects.add(new mapObj(26,5,"blueWizard"));
+                    objects.add(new MapObj(26,5,"blueWizard"));
                     blueMoney -=16;
                 }else{
                     print("You don't have enough money to buy this");
@@ -232,10 +232,10 @@ public class Main {
             }
             if(Objects.equals(purchase, "6")){
                 if (player == 1 && redMoney >= 30){
-                    objects.add(new mapObj(26,45,"redDragon"));
+                    objects.add(new MapObj(26,45,"redDragon"));
                     redMoney -=30;
                 }else if(player ==2 && blueMoney >= 30){
-                    objects.add(new mapObj(26,5,"blueDragon"));
+                    objects.add(new MapObj(26,5,"blueDragon"));
                     blueMoney -=30;
                 }else{
                     print("You don't have enough money to buy this");
@@ -244,13 +244,13 @@ public class Main {
 
             }
             if(Objects.equals(purchase, "thisisacrazycheatcode")){
-                objects.add(new mapObj(26,5,"redDragon"));
-                objects.add(new mapObj(20,5,"redDragon"));
-                objects.add(new mapObj(20,10,"redDragon"));
+                objects.add(new MapObj(26,5,"redDragon"));
+                objects.add(new MapObj(20,5,"redDragon"));
+                objects.add(new MapObj(20,10,"redDragon"));
             }
             buying = false;
         }
-        for (mapObj m : objects) {
+        for (MapObj m : objects) {
             if (player == 1) {
 
                 displayObj();
@@ -312,12 +312,12 @@ public class Main {
         displayObj();
         printMap(2);
         }
-        public static void encounter(mapObj self){
-            for (mapObj m : objects){
+        public static void encounter(MapObj self){
+            for (MapObj m : objects){
              if (Math.sqrt(Math.pow(Math.abs(m.x-self.x),2)+Math.pow(Math.abs(m.y-self.y),2)) <= self.range){
-                 if (!(Objects.equals(m.color, self.color)) && m.value >=0) {
+                 if (!(Objects.equals(m.color, self.color)) && m.value > 0) {
                      print("Your "+self.type+" encountered a "+m.type);
-                     if (Objects.equals(self.type, "redSoldier") || Objects.equals(self.type, "blue Soldier") ||Objects.equals(self.type, "player1") || Objects.equals(self.type, "player2") || Objects.equals(self.type, "redKnight") || Objects.equals(self.type, "blueKnight") ){
+                     if (Objects.equals(self.type, "redSoldier") || Objects.equals(self.type, "blueSoldier") ||Objects.equals(self.type, "player1") || Objects.equals(self.type, "player2") || Objects.equals(self.type, "redKnight") || Objects.equals(self.type, "blueKnight") ){
                          print("Your "+self.type+" struck a "+m.type+" with its sword");
                          m.value -= self.damage;
                          if (m.value <=0){
@@ -362,7 +362,7 @@ public class Main {
             }
 
         }
-        public static void terrain(mapObj m){
+        public static void terrain(MapObj m){
             if (Objects.equals(storeMap[m.x][m.y], Main.toColor("\uD83D\uDDFB", "green"))){
                 if (Math.random() <= .4 && m.value <= 7){
                     print("a blizzard starts and "+m.type+" is frozen to death");
